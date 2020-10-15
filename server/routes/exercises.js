@@ -11,17 +11,13 @@ router.post("/add", (req, res) => {
   const { username, description } = req.body;
   const duration = Number(req.body.duration);
   const date = Date.parse(req.body.date);
-  const newExercise = new Exercise({
-    username,
-    description,
-    duration,
-    date,
-  });
-
-  newExercise
-    .save()
-    .then(() => res.json("exercise added"))
-    .catch((err) => res.status(400).json(`Error: ${err}`));
+  Exercise.create({ username, description, duration, date })
+    .then(() => {
+      res.json({ msg: "Exercise created" });
+    })
+    .catch((err) => {
+      console.error(err);
+    });
 });
 
 router.get("/:id", (req, res) => {
@@ -36,20 +32,14 @@ router.delete("/:id", (req, res) => {
     .catch((err) => res.status(400).json(`Error: ${err}`));
 });
 
-router.post("/update/:id", (req, res) => {
-  Exercise.findById(req.params.id)
-    .then((exercise) => {
-      exercise.username = req.body.username;
-      exercise.description = req.body.description;
-      exercise.duration = Number(req.body.duration);
-      exercise.date = Date.parse(req.body.date);
-
-      exercise
-        .save()
-        .then(() => res.json("exercise updated"))
-        .catch((err) => res.status(400).json(`Error: ${err}`));
+router.put("/update/:id", (req, res) => {
+  Exercise.findByIdAndUpdate(req.params.id, req.body)
+    .then(() => {
+      res.json({ msg: "exercise updated" });
     })
-    .catch((err) => res.status(400).json(`Error: ${err}`));
+    .catch((err) => {
+      console.error(err);
+    });
 });
 
 module.exports = router;

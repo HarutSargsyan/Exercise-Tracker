@@ -3,7 +3,7 @@ const cors = require('cors')
 const mongoose = require('mongoose')
 const app = express()
 require('dotenv').config()
-const url = process.env.CLUSTER_URL
+const url = "mongodb+srv://Harut_10:Harut_10@cluster0.51ksv.mongodb.net/exercises?retryWrites=true&w=majority"
 const usersRouter = require('./routes/users')
 const exrecisesRouter = require('./routes/exercises')
 
