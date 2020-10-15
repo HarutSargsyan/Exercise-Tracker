@@ -1,2 +1,10 @@
-# mern-exercise-tracker
-For API I used Node.js, and for frontend I used react and bootstrap for styling. The database is Mongodb.
+# Exercise-Tracker
+
+# npm i
+For installng dependencies 
+
+# Write your mongodb atlas connection info
+To connect mongodb.
+
+# npm start
+ For both server and client sides

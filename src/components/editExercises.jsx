@@ -109,8 +109,8 @@ export default ({ match }) => {
         <div className="form-group">
           <input
             type="submit"
-            value="edit Exercise Log"
-            className="btn btn-primary"
+            value="Edit"
+            className="btn btn-warning"
           />
         </div>
       </form>
